@@ -1,1 +1,1 @@
-# supernova
+# supernova created by nyogino

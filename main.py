@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import pybitflyer
+""" MODULES """
 
-# -------------------------------------------------------------------------------------- #
-# VARIABLES
+import pybitflyer
+from time import sleep
+
+""" VARIABLES """
 
 api = pybitflyer.API(
     api_key="7viZ9zampR4nh62Gm8ihsU",
@@ -12,27 +14,30 @@ api = pybitflyer.API(
 
 product_code = "FX_BTC_JPY"
 
-# -------------------------------------------------------------------------------------- #
-# SUBS
-def board:
-    """Returns list of given information on the board"""
+
+""" SUBROUTINES """
+
+def board_dict(target):
+    """
+        Returns list of given information on the board
+            Default: mid_price
+            Optimal: asks, bids
+    """
     board = api.board(product_code=product_code)
-    asks = board["asks"]
-    mid_price = board["mid_price"]
-    bids = board["bids"]
-    return(asks, mid_price, bids)
+    return(board[target])
 
-# -------------------------------------------------------------------------------------- #
-# CORE
 
-board()
+""" MAIN """
 
-print(mid_price)
+for count in range(10):
+    mid = board_dict(target="mid_price")
+    print(mid)
+    sleep(5)
 
-print("----------------------------")
 
-print(len(asks))
-print(len(bids))
+# print(mid_price)
+# print(len(asks))
+# print(len(bids))
 
 # for ask in asks:
 #     print(ask)

@@ -20,28 +20,28 @@ product_code = "FX_BTC_JPY"
 """ SUBROUTINES """
 
 
-def board_dict(category):
-    """
-        Returns list of given information on the board
-            Default: mid_price
-            Optimal: asks, bids
-    """
+def board_dict():
     board = api.board(product_code=product_code)
-    return(board[category])
+    return(board["mid_price"], board["asks"], board["bids"])
 
 
 """ MAIN """
 
 
-for count in range(10):
-    mid = board_dict("mid_price")
-    print(mid)
-    sleep(5)
+# for count in range(10):
+#     mid, asks, bids = board_dict()
+#     print(mid)
+#     sleep(1)
 
-mid = board_dict("mid_price")
-asks = board_dict("asks")
-bids = board_dict("bids")
-#
-# print(mid)
-# print(asks)
-# print(bids)
+mid, asks, bids = board_dict()
+
+for ask in asks[0:5]:
+    print(ask)
+
+print("--")
+print(mid)
+print("--")
+
+for bid in bids[0:5]:
+    print(bid)
+

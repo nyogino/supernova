@@ -4,7 +4,7 @@
 """ MODULES """
 
 import pybitflyer
-from time import sleep
+# from time import sleep
 
 
 """ VARIABLES """
@@ -28,20 +28,21 @@ def board_dict():
 """ MAIN """
 
 
-# for count in range(10):
-#     mid, asks, bids = board_dict()
-#     print(mid)
-#     sleep(1)
-
 mid, asks, bids = board_dict()
 
-for ask in asks[0:5]:
-    print(ask)
+
+# for bid in bids[0:5]:
+#     print(bid)
 
 print("--")
 print(mid)
 print("--")
 
-for bid in bids[0:5]:
-    print(bid)
+ask_1to5 = []
+for ask in asks[0:5]:
+    ask_1to5.append(ask["price"])
+
+# average gap from mid
+print("ask gap 5 units:", sum(ask_1to5)/5.0 - mid)
+
 

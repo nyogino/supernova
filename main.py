@@ -4,6 +4,7 @@
 """ MODULES """
 
 import pybitflyer
+import math
 # from time import sleep
 
 
@@ -38,11 +39,9 @@ print("--")
 print(mid)
 print("--")
 
-ask_1to5 = []
-for ask in asks[0:5]:
-    ask_1to5.append(ask["price"])
+ask_list = []
+for ask in asks[0:2]:
+    ask_list.append(ask["size"] * ask["price"])
 
-# average gap from mid
-print("ask gap 5 units:", sum(ask_1to5)/5.0 - mid)
-
+print("ask gap from mid", abs(mid - sum(ask_list)/2))
 

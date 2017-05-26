@@ -31,11 +31,16 @@ mid, asks, bids = board_dict()
 
 print(mid)
 
-buy_btc = api.sendchildorder(product_code=product_code,
-                             child_order_type="MARKET",
-                             side="BUY",
-                             size=0.001,
-                             minute_to_expire=10000,
-                             time_in_force="GTC"
-                             )
-print(buy_btc)
+# buy_btc = api.sendchildorder(product_code=product_code,
+#                              child_order_type="MARKET",
+#                              side="BUY",
+#                              size=0.001,
+#                              minute_to_expire=10000,
+#                              time_in_force="GTC"
+#                              )
+# print(buy_btc)
+
+
+get_list = api.getpositions(product_code=product_code
+                              )
+print(get_list)
